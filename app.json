@@ -4,11 +4,9 @@
     "slug": "elearningApp",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
     "newArchEnabled": false,
     "splash": {
-      "image": "./assets/splash-icon.png",
       "resizeMode": "contain",
       "backgroundColor": "#4169E1"
     },
@@ -20,15 +18,11 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/icon.png",
         "backgroundColor": "#4169E1"
       },
       "package": "com.zainab.elearningapp",
       "versionCode": 1,
       "permissions": ["INTERNET", "ACCESS_NETWORK_STATE"]
-    },
-    "web": {
-      "favicon": "./assets/favicon.png"
     },
     "plugins": [
       "expo-sqlite",
