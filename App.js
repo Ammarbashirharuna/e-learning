@@ -1,20 +1,43 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import React, { useEffect, useState } from 'react';
+import { View, ActivityIndicator } from 'react-native';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
+import AppNavigator from './navigation/AppNavigator';
+import { resetDatabase } from './database/db';
 
 export default function App() {
+  const [isResetting, setIsResetting] = useState(true);
+
+  useEffect(() => {
+    const reset = async () => {
+      try {
+        console.log('🔄 Resetting database...');
+        await resetDatabase();
+        console.log(' Database reset complete!');
+      } catch (error) {
+        console.error(' Reset failed:', error);
+      } finally {
+        setIsResetting(false);
+      }
+    };
+
+    // COMMENT THIS OUT AFTER FIRST RUN!
+    // reset();
+    
+    // UNCOMMENT THIS after first successful reset:
+    setIsResetting(false);
+  }, []);
+
+  if (isResetting) {
+    return (
+      <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+        <ActivityIndicator size="large" color="#4169E1" />
+      </View>
+    );
+  }
+
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <SafeAreaProvider>
+      <AppNavigator />
+    </SafeAreaProvider>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
