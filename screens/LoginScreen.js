@@ -69,6 +69,21 @@ const LoginScreen = ({ navigation }) => {
         <TouchableOpacity onPress={() => navigation.navigate('Signup')}>
           <Text style={styles.linkText}>Sign up (new user)</Text>
         </TouchableOpacity>
+
+        {/* ADMIN ACCESS SECTION */}
+        <View style={styles.divider}>
+          <View style={styles.line} />
+          <Text style={styles.dividerText}>OR</Text>
+          <View style={styles.line} />
+        </View>
+
+        <TouchableOpacity 
+          style={styles.adminButton}
+          onPress={() => navigation.navigate('AdminLogin')}
+        >
+          <Ionicons name="shield-checkmark" size={20} color="#4169E1" />
+          <Text style={styles.adminButtonText}>Admin Access</Text>
+        </TouchableOpacity>
       </View>
     </View>
   );
@@ -152,6 +167,39 @@ const styles = StyleSheet.create({
     color: '#4169E1',
     textAlign: 'center',
     fontSize: 14,
+  },
+  // ADMIN ACCESS STYLES
+  divider: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginVertical: 20,
+  },
+  line: {
+    flex: 1,
+    height: 1,
+    backgroundColor: '#e0e0e0',
+  },
+  dividerText: {
+    marginHorizontal: 10,
+    color: '#999',
+    fontSize: 12,
+    fontWeight: '500',
+  },
+  adminButton: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    padding: 14,
+    borderWidth: 1.5,
+    borderColor: '#4169E1',
+    borderRadius: 8,
+    backgroundColor: '#f0f5ff',
+  },
+  adminButtonText: {
+    color: '#4169E1',
+    fontSize: 15,
+    fontWeight: '600',
+    marginLeft: 8,
   },
 });
 

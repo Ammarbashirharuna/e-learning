@@ -7,7 +7,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Ionicons } from '@expo/vector-icons';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { initDatabase, seedCourses } from '../database/db';
-
+import AdminLoginScreen from '../screens/Admin/AdminLoginScreen';
 import SplashScreen from '../screens/SplashScreen';
 import OnboardingScreen from '../screens/OnboardingScreen';
 import LoginScreen from '../screens/LoginScreen';
@@ -20,6 +20,13 @@ import CoursesScreen from '../screens/CoursesScreen'; // Added this
 import CourseDetailScreen from '../screens/CourseDetailScreen';
 import SectionContentScreen from '../screens/SectionContentScreen';
 import LessonScreen from '../screens/LessonScreen';
+
+// Import admin screens at the top
+import AdminDashboardScreen from '../screens/Admin/AdminDashboardScreen';
+import ManageCoursesScreen from '../screens/Admin/ManageCoursesScreen';
+import AddEditCourseScreen from '../screens/Admin/AddEditCourseScreen';
+import ManageLessonsScreen from '../screens/Admin/ManageLessonsScreen';
+import AddEditLessonScreen from '../screens/Admin/AddEditLessonScreen';
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -114,6 +121,13 @@ const AppNavigator = () => {
 
         {/* AUTH SCREENS */}
         <Stack.Screen name="Login" component={LoginScreen} />
+        <Stack.Screen name="AdminLogin" component={AdminLoginScreen} />
+        {/* ADMIN SCREENS */}
+<Stack.Screen name="AdminDashboard" component={AdminDashboardScreen} />
+<Stack.Screen name="ManageCourses" component={ManageCoursesScreen} />
+<Stack.Screen name="AddEditCourse" component={AddEditCourseScreen} />
+<Stack.Screen name="ManageLessons" component={ManageLessonsScreen} />
+<Stack.Screen name="AddEditLesson" component={AddEditLessonScreen} />
         <Stack.Screen name="Signup" component={SignupScreen} />
 
         {/* MAIN APP AFTER LOGIN */}
